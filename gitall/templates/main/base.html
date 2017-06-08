@@ -1,14 +1,36 @@
+{% load staticfiles%}
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Beta | GitAll</title>
-</head>
-<body>
-<div class="row">
-	<div>
-		<p>PLVS VLTRA</p>
-	</div>
-</div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-</body>
+    <title>Alpha | GitAll</title>
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+SC" rel="stylesheet"> 
+    <!-- Main CSS File -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css'%}">
+</head>
+
+  <body>
+  	{% block content %}
+
+  	{% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <!-- Main JS -->
+    <script type="text/javascript" src="js/main.js"></script>  
+  </body>
 </html>

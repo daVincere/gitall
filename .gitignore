@@ -4,6 +4,9 @@ v
 # file containing keys
 key.py
 
+# Static website
+staticsite
+
 .Python
 bin/
 include/

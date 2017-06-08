@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div></div>
+<div class="clearfix" style="height=10px;"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col s4 offset-s4" align="center">
+      <img id="name" class="responsive-img" src="{% static 'images/name.png' %}">
+    </div>
+    <div class="col s6 offset-s3 desc" align="center">
+      <p class="desc">A COLLABORATIVE REPOSITORY OF TUTORIALS</p>
+    </div>
+  </div>
+  <div class="clearfix" style="height=10px;"></div>
+
+  <div class="row" align="center">
+    <div class="col s4 offset-s4">
+      <img id='logo' class="responsive-img rotateIn animated" src="{% static 'images/logo.png' %}">
+    </div>
+  </div>
+
+</div>
+<div class="footer">
+  <div class="" align="center">
+    
+  </div>
+</div>
+
+{% endblock %}

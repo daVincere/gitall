@@ -13,11 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
 
 from main import views as mainview
+
+# 
+# handlers to handle the 404/403.. requests
+# 
+from django.conf.urls import (handler400, handler403, handler404, handler500)
+
+handler400 = 'main.views.handler400'
+handler403 = 'main.views.handler403'
+handler404 = 'main.views.handler404'
+handler500 = 'main.views.handler500'
+
 urlpatterns = [
 	url(r'^$', mainview.home, name="base"),
     url(r'^admin/', admin.site.urls),
-]
+] 
+
+if settings.DEBUG:
+	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+  	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
