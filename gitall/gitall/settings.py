@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = key.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,7 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'accounts',
-    'write'
+    'write',
+
+    # Django all auth
+    'django.contrib.sites',    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+
 ]
 
 MIDDLEWARE = [
@@ -119,13 +129,44 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-STATICFILES_DIRS = [
-    os.path.join("static",),
-]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join("static_in_env", "staticfiles",)
+STATIC_ROOT = os.path.join("static_in_dev", "staticfiles",)
+
+STATICFILES_DIRS = [
+    os.path.join("static_in_production",),
+]
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join("static_in_env", "media")
+MEDIA_ROOT = os.path.join("static_in_dev", "media")
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_QUERY_EMAIL = True
+LOGIN_REDIRECT_URL = "/"
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    },
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
